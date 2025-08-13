@@ -1,0 +1,59 @@
+//////////////////////////////////////////////////////////////////
+Beginner 
+1.Match all orders with status "delivered".
+
+2.Project only customer.name and status from all orders.
+
+3.Sort all orders by orderDate in descending order.
+
+4.Limit the output to the first 3 orders.
+
+5.Skip the first 2 orders and return the rest.
+
+6.Count how many orders are "pending".
+
+7.Find distinct cities from which customers placed orders.
+
+8.Return orders where customer.age is greater than 30.
+
+/////////////////////////////////////////////////////////////////
+Intermediate
+9.Group orders by status and count how many there are in each group.
+
+10.Group by paymentMethod and find the total revenue.
+
+11.Calculate the total revenue per category of items (hint: $unwind + $group).
+
+12.Show the average age of customers for each city.
+
+13.For each customer, calculate total amount spent (price × quantity).
+
+14.Find the top 3 most sold products (by quantity).
+
+15.For each order, add a field "totalItems" with the number of items purchased.
+
+16.Show the earliest and latest orderDate in the collection
+
+//////////////////////////////////////////////////////////////////////////////
+Advanced (17–25)
+17.Bucket customers into age ranges: 18–25, 26–35, 36–50, and count orders in each range.
+
+18.For each category, show total sales and sort categories by sales descending.
+
+18.Use $facet to get:
+
+-Orders grouped by status
+
+-Top 5 cities by total orders
+
+20.Lookup from another collection customers_reviews to join review data with orders.
+
+21.For each customer, list all products purchased as a single array.
+
+22.Use $reduce to combine product names in an order into a single string.
+
+23.Use $map to create an array of total cost for each item in every order.
+
+24.Use $setWindowFields to rank orders by total purchase amount.
+
+25.Merge aggregation results into a new collection called sales_summary.
