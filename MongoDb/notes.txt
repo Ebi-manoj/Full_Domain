@@ -1,0 +1,8 @@
+///////////////////////////////////////////////////////////////////
+_id is a 12 byte hexadecimal number which ensures the uniqueness of the documents
+first 4 bytes represent the currentTimestamp
+next 3 bytes represent the machineId 
+next 3 bytes represent the processId for mongoDb server
+next 2 bytes represent simple incremental value
+
+///////////////////////////////////////////////////////////////////////
