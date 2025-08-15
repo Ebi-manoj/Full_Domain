@@ -1,0 +1,87 @@
+1)Write a query to find the third highest  salary from the EmployeeInfo collection
+db.EmployeeInfo.aggregate([
+  {
+    $group: {
+      _id: "$Salary" 
+    }
+  },
+  {
+    $sort: { _id: -1 } 
+  },
+  {
+    $skip: 2 
+  },
+  {
+    $limit: 1 
+  }
+]);
+/////////////////////////////////////////////////////////////////////
+2)Find duplicate collection
+db.EmployeeInfo.aggregate([
+  {
+    $group: {
+      _id: { EmpFname: "$EmpFname", EmpLname: "$EmpLname" }, 
+      count: { $sum: 1 }, 
+      docs: { $push: "$$ROOT" }
+    }
+  },
+  {
+    $match: {
+      count: { $gt: 1 } 
+    }
+  }
+]);
+
+///////////////////////////////////////////////////////////////////////////
+
+3)Write a query to display the first and last record from the EmployeeInfo table collection?
+db.employees.aggregate([ { $sort: { EmpId: 1 } }, { $group: { _id: null, first: { $first: "$$ROOT" }, last: { $last: "$$ROOT" } } }] )
+
+///////////////////////////////////////////////////////////////////////////
+4)How do you copy all documents of a collection using query ?
+db.employees.aggregate([ { $match: {} }, { $out: "copyCollection" }] )
+5)Write  a query to retrieve the list of employees working in the same department ?
+db.employees.aggregate([ { $group: { _id: "$Department", Employees: { $push: "$EmpFname" } } }] )
+/////////////////////////////////////////////////////////////////////////
+db.EmployeeInfo.find()
+  .sort({ EmpId: -1 }) 
+  .limit(3);
+
+7)Write a query to fetch details of an employee whose EmpLname ends with an alphabet ‘A’ and contains five alphabets ?
+ db.employees.find({ EmpLname: { $regex: /.{4}a$/i } })
+////////////////////////////SECTION2///////////////////////
+ /////////////////////////////////////////////////////////////////
+1)Write a query to find out the average spent amount of customers who received more than 10 catalogs
+db.marketing.aggregate([
+... {
+... $match:{Children:{$ne:0}}
+... },
+... {
+... $group:{
+... _id:null,
+... averageSpent:{$avg:"$AmountSpent"},
+... totalSum:{$sum:"$AmountSpent"}
+... }
+... ])
+2)Write a query to calculate the average salary and the total spent amount for customers who have at least 1 child
+db.Customers.aggregate([
+  {
+    $match: { Children: { $gte: 1 } } 
+  },
+  {
+    $group: {
+      _id: null, // one group for all
+      avgSalary: { $avg: "$Salary" },
+      totalAmountSpent: { $sum: "$AmountSpent" }
+    }
+  },
+  {
+    $project: { _id: 0, avgSalary: 1, totalAmountSpent: 1 }
+  }
+]);
+
+
+///////////////////////////////////////MOVIE COLLECTION///////////////////////////
+1)Write a query to campaign documents and return all movie details when the same directors 
+db.movies.aggregate([ { $group: { _id: "$director", moviesDone: { $push:{title:"$title",year:"$year"} } } }] )
+
