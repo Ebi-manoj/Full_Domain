@@ -1,0 +1,15 @@
+
+Nodejs is single threaded synchrnous blocking  execution
+by default nodejs can handle async operation by libuv
+but if it is intensive task like cpu intensive or I/O task libuv handle that task to thread pool
+by default thread pool has only 4 threads and with 4 threads it can handle parrellism
+but in the case of I/o thread pool is not used,instead it delegates the task to orders
+
+The order of execution starts by executing all the synchronus code first then it moves to event lookup
+in event loop--
+The microTask queue as first priorities which spilted into next tick and promise queue which next tick queue has highest
+priorities followed by promise queue
+Then it moves to timer queue executing each callback after it will check to microtask queue and execute if present
+Then it moves to I/O queue same checking after execution in microTask queueue
+Then check queueu which setImmediate callbacks falls under
+Then followed by close queue and finsihes the first circle,if any other callback present it will continue the loop again

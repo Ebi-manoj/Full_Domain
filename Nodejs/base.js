@@ -1,5 +1,6 @@
 const path = require('path');
 const filePath = '/Nodejs/base.js';
+const fs = require('fs');
 
 //////////////////////////////////////////////
 //Basic usefull functions of path module
@@ -24,7 +25,6 @@ const emitter = new eventEmitter();
 /////////////////////////////////////////////////
 ////Basic operations using fs module
 
-// const fs = require('fs');
 // fs.writeFile('example.txt', 'Hello my world', err => {
 //   if (err) {
 //     return console.log('Error in writing the code');
@@ -46,6 +46,7 @@ const emitter = new eventEmitter();
 ///Create a server using HTTP module
 
 const http = require('http');
+const { Duplex, Transform } = require('stream');
 
 http
   .createServer((req, res) => {
@@ -53,3 +54,60 @@ http
     res.end('Hello word');
   })
   .listen(3000, () => console.log('server running on 3000'));
+
+//////////////////////////////////////////////////////////////
+///STREAMS AND BUFFER
+
+//Character set--this dictates how to represent a character in a form of number (UNICODE and ASCII)
+//Character encoding--this dicatetes how to represent a number in character set in a binary format (UTF-8,in bytes means 8bits)
+
+///STREAM--Its a sequential of data that should be transformed from one place to another place
+//BUFFER--Its a intentially small area that node maintains in runtime in the process of stream Data
+
+// const buffer = Buffer.from('Ebi');
+// buffer.write('Hello mr');
+// console.log(buffer);
+// console.log(buffer.toString());
+
+// const readableStream = fs.createReadStream('file.txt', {
+//   encoding: 'utf-8',
+//   highWaterMark: 2,
+// });
+// const writableStream = fs.createWriteStream('file2.txt');
+
+// readableStream.on('data', chunk => {
+//   console.log(chunk);
+//   writableStream.write(chunk);
+// });
+
+/////////////////////////////////////////////////////////////////////////
+// const duplex = new Duplex({
+//   read() {
+//     this.push('Hi from readble side');
+//     this.push(null);
+//   },
+//   write(chunk, encoding, callback) {
+//     console.log('Writable received', chunk.toString());
+//     callback();
+//   },
+// });
+
+// duplex.write('Hello ebi');
+// duplex.on('data', chunk => {
+//   console.log('Readable', chunk.toString());
+// });
+
+/////////////////////////////////////////////////////////////////
+//TRANSFORM STREAM
+
+// const upperCase = new Transform({
+//   transform(chunk, encoding, callback) {
+//     this.push(chunk.toString().toUpperCase());
+//     callback();
+//   },
+// });
+
+// upperCase.write('Hello Ebi');
+// upperCase.on('data', chunk => {
+//   console.log(chunk.toString());
+// });
