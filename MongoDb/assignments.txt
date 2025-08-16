@@ -85,3 +85,29 @@ db.Customers.aggregate([
 1)Write a query to campaign documents and return all movie details when the same directors 
 db.movies.aggregate([ { $group: { _id: "$director", moviesDone: { $push:{title:"$title",year:"$year"} } } }] )
 
+////////////////////////////////
+///NEXT SECTION
+1) Write a query to show the item, price, quantity, instock from each product from the above collection.
+db.orders.aggregate([
+  {
+    $lookup: {
+      from: "inventory",
+      localField: "_id",    
+      foreignField: "_id", 
+      as: "inventory_data"   
+    }
+  },
+  {
+    $unwind: "$inventory_data" 
+  },
+  {
+    $project: {
+      _id: 0,
+      item: 1,
+      price: 1,
+      quantity: 1,
+      instock: "$inventory_data.instock"
+    }
+  }
+]);
+  
