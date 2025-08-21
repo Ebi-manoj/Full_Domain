@@ -63,6 +63,22 @@ class Graph {
     }
     return result;
   }
+  detectCycle(start) {
+    const visited = new Set();
+
+    const dfs = (current, parent) => {
+      visited.add(current);
+      for (const neighbor of this.adjacentList[current]) {
+        if (!visited.has(neighbor)) {
+          if (dfs(neighbor, current)) return true;
+        } else if (neighbor != parent) {
+          return true;
+        }
+      }
+      return false;
+    };
+    return dfs(start, -1);
+  }
 }
 
 const graph = new Graph();
