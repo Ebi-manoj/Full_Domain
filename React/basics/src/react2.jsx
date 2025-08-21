@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 
-export function Parent() {
+function Parent() {
   const [count, setCount] = useState(0);
   const [text, setText] = useState(true);
   console.log('Parent rendered');
@@ -26,6 +26,7 @@ const Child = React.memo(() => {
     </div>
   );
 });
+export default Parent;
 // const Child = () => {
 //   console.log('Child rendered');
 //   return (
