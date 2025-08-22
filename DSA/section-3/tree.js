@@ -111,6 +111,15 @@ class BinaryTree {
 
     return Math.max(left, right) + 1;
   }
+  isBalancedOrNot(root = this.root) {
+    if (!root) return true;
+    const left = this.height(root.left);
+    const right = this.height(root.right);
+
+    if (Math.abs(left - right) > 1) return false;
+
+    return this.isBalancedOrNot(root.left) && this.isBalancedOrNot(root.right);
+  }
 }
 
 // const btree=new BinaryTree()

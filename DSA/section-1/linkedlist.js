@@ -228,6 +228,7 @@ class DoubliList {
   reverse() {
     let current = this.head;
     let temp = null;
+    //1-2-3-4-5
     while (current) {
       temp = current.prev;
       current.prev = current.next;
