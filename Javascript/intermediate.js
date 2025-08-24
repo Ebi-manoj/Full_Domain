@@ -2,7 +2,7 @@
 //POLYFILLS
 //these are patch up code that used if the older browser didnt support native features (like a backup plan)
 //suppose if write arr.includes and includes is not supported in older browser we will create a includes methods manually
-// Array.prototype.includes....thus every browser will now support arr.includes
+//and set it like Array.prototype.includes....thus every browser will now support arr.includes
 
 /////////////////////////////////////////////////////
 ///PROXY OBJECT
@@ -33,3 +33,32 @@ parent.addEventListener('click', function (e) {
     console.log('clicked on', e.target.dataset.action);
   }
 });
+
+//////////////////////////////////////////////////////////
+//MEMOIZATION caching
+
+function memoize(fn) {
+  let cache = {};
+
+  return function (x) {
+    if (cache[x]) {
+      console.log('Fetching from cache');
+      return cache[x];
+    }
+    console.log('calculating');
+    let result = fn(x);
+    cache[x] = result;
+    return result;
+  };
+}
+
+function fib(num) {
+  if (num <= 1) return num;
+  return fib(num - 1) + fib(num - 2);
+}
+
+const fibbonaci = memoize(fib);
+console.log(fibbonaci(10));
+console.log(fibbonaci(20));
+console.log(fibbonaci(10));
+console.log(fibbonaci(20));
