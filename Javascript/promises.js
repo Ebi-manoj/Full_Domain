@@ -43,9 +43,9 @@ function third(second) {
 ////////////////////////////////////////////////////////////////////
 ///PROMISE API
 
-const p1 = Promise.reject('p1 resolved');
-const p2 = Promise.reject('p2 resolved');
-const p3 = Promise.reject('p3 resolved');
+// const p1 = Promise.reject('p1 resolved');
+// const p2 = Promise.reject('p2 resolved');
+// const p3 = Promise.reject('p3 resolved');
 
 //1)Promise.all()
 //returns all resolved promise in an array ,if one is rejected it will give only the rejected promise
@@ -72,3 +72,24 @@ const p3 = Promise.reject('p3 resolved');
 // Promise.race([p1, p2, p3])
 //   .then(data => console.log(data))
 //   .catch(err => console.log(err));
+
+////////////////////////////////////////////////////////////////////////
+//////
+const promiseSample = new Promise((resolve, reject) => {
+  resolve('Promise resolved');
+});
+const promiseSample2 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve('Promise resolved');
+  }, 5000);
+});
+
+async function handle() {
+  console.log(1);
+  await promiseSample;
+  console.log(2);
+}
+
+console.log(3);
+Promise.resolve('Hello').then(res => console.log(res));
+console.log(4);

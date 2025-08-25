@@ -1,24 +1,37 @@
-const cluster = require('cluster');
 const http = require('http');
 const os = require('os');
+const cluster = require('cluster');
 
 if (cluster.isMaster) {
-  console.log(`Master ${process.pid} is running`);
-  cluster.fork();
-  cluster.fork();
+  const cpus = os.cpus().length;
+  console.log(cpus);
+  for (let i = 0; i < cpus; i++) {
+    cluster.fork();
+  }
 } else {
   http
     .createServer((req, res) => {
       if (req.url == '/') {
-        console.log(req.headers.authorization);
+        res.end(`Fast page1 running on${process.pid}`);
+      } else if (req.url == '/slow-page') {
+        const start = Date.now();
+        for (let i = 0; i < 100000000000; i++) {}
 
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Home Page');
-      } else if (req.url == '/slowpage') {
-        for (let i = 0; i < 6000000000; i++) {}
-        res.writeHead(200, { 'Content-Type': 'text/plain' });
-        res.end('Slow page');
+        res.end(`Fast-page ${Date.now() - start}`);
       }
     })
-    .listen(3000, () => console.log('Server running on the port'));
+    .listen(3000, () => console.log(`Server running on ${process.pid}`));
 }
+
+// http
+//   .createServer((req, res) => {
+//     if (req.url == '/') {
+//       res.end(`Fast page1 running on${process.pid}`);
+//     } else if (req.url == '/slow-page') {
+//       const start = Date.now();
+//       for (let i = 0; i < 10000000000; i++) {}
+
+//       res.end(`Fast-page ${Date.now() - start}`);
+//     }
+//   })
+//   .listen(3000, () => console.log(`Server running on ${process.pid}`));
