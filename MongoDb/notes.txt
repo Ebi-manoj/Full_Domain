@@ -6,3 +6,22 @@ next 3 bytes represent the processId for mongoDb server
 next 2 bytes represent simple incremental value
 
 ///////////////////////////////////////////////////////////////////////
+
+GEOSPATIAL QUERY AND INDEXING
+
+mongodb will allows us to query the data based on geospatial data
+for example if a documents containing a Geojson Data like {type:point,cordinates:[lattitude,longitude]}
+mongodDB can get the nearest location $near operator using this geoJson and $within,
+and to Faster up this query we can use geoSpatial Index db.collectioname.createIndex({fieldName:'2dsphere'})
+db.places.find({
+  location: {
+    $near: {
+      $geometry: { type: "Point", coordinates: [76.2673, 9.9312] },
+      $maxDistance: 10000  // in meters (10 km)
+    }
+  }
+})
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+/////

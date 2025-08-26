@@ -1,3 +1,38 @@
+/////////////////////////////////////EMP DATABSE////////////////////////////////
+1.Find all employees whose Age is greater than 25 and Salary less than 100000.
+
+2.Find employees who are either in Developer or HR department and are permanent.
+
+3.Find employees not in HR department using a logical operator.
+
+4.Find employees whose Skills array contains both "JavaScript" and "NodeJS".
+
+5.Find employees who have "MongoDB" in Skills but not "Python".
+
+6.Increase the Salary by 10% for all employees in the Developer department.
+
+7.Add a new skill "TypeScript" to employees who already know "JavaScript".
+
+8.Remove "Payroll" skill from employees who have it in their Skills array.
+
+9.Find employees who have at least 2 projects.
+
+10.Update the first project duration of all employees in Developer department to 12 months.
+
+11.Find employees whose first name starts with 'A' or ends with 'i'.
+
+12.Increment Age by 1 for all interns (IsPermanent: false).
+
+13.Find employees where any project has DurationMonths greater than 6.
+
+14.Replace "HR" department with "HumanResources" using a single update operator for all matching employees.
+
+15.Find employees whose Skills array has size exactly 3 and Salary greater than 90000.
+
+
+
+
+////////////////////////////ORDERS DATABASE/////////////////////////////
 //////////////////////////////////////////////////////////////////
 Beginner 
 1.Match all orders with status "delivered".
@@ -57,3 +92,44 @@ Advanced (17–25)
 24.Use $setWindowFields to rank orders by total purchase amount.
 
 25.Merge aggregation results into a new collection called sales_summary.
+
+
+///////////////////////////////////////////////////////////////////////////////
+//////People////////////////////////////////////////////////
+
+1.Find the average salary of employees in each department.
+
+2.List employees who have been working for more than 3 years (based on joinDate).
+
+3.Find the highest paid employee in each department.
+
+4.Show the total salary expense of each department and compare it with the department budget.
+
+5.Find the top 2 highest-paid employees overall.
+
+6.List departments where the average salary is greater than 80,000.
+
+7.Find employees who are working on more than 1 project.
+
+8.For each department, calculate min, max, and average salaries.
+
+9.Find employees whose salary is above the department’s average salary.
+
+10.Count how many employees each manager manages.
+
+11.Find the department with the most employees.
+
+12.Create a list of all distinct projects employees are working on (flattened).
+
+13.Find employees whose names start with 'A' or end with 'e'.
+
+14.Show the age distribution of employees in buckets: <30, 30-35, >35.
+
+15.Join employees with departments and show employees along with their department’s location.
+
+
+
+//////
+db.employees.find({ $expr: { $gt: [ "$field1", "$field2" ] } })
+expr allows you to compare to values put it with comparison operaort and calculated
+values or fields in an array
