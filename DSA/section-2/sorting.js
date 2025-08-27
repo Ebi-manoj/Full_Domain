@@ -8,7 +8,7 @@ const arr = [1, 3, 6, 8, 2, 5, 4, 7];
 function bubbleSort(arr) {
   for (let i = 0; i < arr.length; i++) {
     let swapped = false;
-    for (let j = 1; j < arr.length; j++) {
+    for (let j = 1; j < arr.length - i; j++) {
       if (arr[j - 1] > arr[j]) {
         swap(arr, j - 1, j);
         swapped = true;

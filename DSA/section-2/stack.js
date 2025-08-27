@@ -64,3 +64,20 @@ function stackUsingQueue() {
   console.log(stack.q1);
 }
 stackUsingQueue();
+
+///////////////////////////////////////////////////
+//SORT A STRING USING STACK
+
+function sortString(str) {
+  const stack = str.split('');
+  const stack2 = [];
+  while (stack.length) {
+    const top = stack.pop();
+
+    while (stack2.length && stack2[stack2.length - 1] > top) {
+      stack.push(stack2.pop());
+    }
+    stack2.push(top);
+  }
+  return stack2.join('');
+}

@@ -1,0 +1,90 @@
+- What is Algorithm
+- Asympotic analysis
+  -Linear and Non-linear Data Stucture
+
+- Stack
+  .Follows Last in first out principle
+  Application:
+  .Function call managment in most programming language
+  .expression evaluation
+  .syntax checker in compiler
+  .undo operation
+  .web page naviagtion
+
+- Queue
+  .Follows First in First out principle
+  Application:
+  .Task sheduling in os
+  .Handling we request
+  .Buffering Data
+
+- HashTable
+  stores key value pair,faster retrival(o(1))
+
+  Method of handling collision
+  1.Open Addressing
+  .Linear probing---checks whether a next slot is available
+  .quadratic probing--similar to linear but in a quadratic sequence 1^2 2^2
+  .Double Hashing--Use a another hash function
+
+  2.Chaining
+  stored the collisions in a linked list or array
+
+  Application :
+  .Cache
+  .Spell checking
+  .Dictonaries in programming langauge
+
+  *LoadFactor
+
+- Tree
+
+*height 
+*depth
+
+-Binary Tree
+
+*Full binary Tree- every node having either 0 or 2 childrens
+*Complete Binary Tree- Every levels are filled possibly except the last one ,but fill from left -right
+*Perfect Binary Tree- Leaves are on the same level and every nodes having 2 children
+*Balanced Tree - Height of left and right subtree must be less than or equal
+
+AVL Tree 
+*self balancing bst,where each node contain a balance factor,which is the height diff between left and right subtree
+if balance factor is greater than 1 the tree itself perform a rotation to balance
+
+RED BLACK Tree
+*Self balancing bst,where each node contain an extra bit for colors,red and black and they will decide the balance roatation
+
+APPLICATION OF TREE:
+*Databse indexing
+*Huffman tree for data compression
+*Decision making in game development
+
+-GRAPH
+
+*Directed Graph- graph having direction,it represent one node can go fron one to another (social connections from one follows and another and other not A-->B)
+*Undirected Graph
+*Weighted
+*Unweighted --No costs at edegs typically 1 on every edegs
+*Cyclic and Acyclic
+*Connected graph-Each node can access other nodes indirectly or directly
+*Disconnected graph- Atleast one node doest have path between other
+*Complete graph-- Each node have connections to all nodes present in graph
+
+*Vertex
+*edges
+*Degree- no of edges to that Vertex
+
+Graph representation
+*Adjacency list
+*Adjaceny Matrix
+
+Shortest Path Algorithms
+-dijistra 
+-bellman-ford
+-floyd-marshal
+
+Minimal spanning tree Alogorithms
+-Kruskal Algorithm
+-Prims algorithm

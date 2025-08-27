@@ -24,7 +24,7 @@
 
 - In a simpler way lexical environment is nothing but just where the code is physically present not where we use it ,means in the case of function c it is lexical sitted that is nexted inside the function b
 
-- With this reason, if we access a variable in c JS will look that variable in the c local memory if not found it will look through its lexical enviroment and this chain goes when lexical environment becomes null, \*This is Called SCOPE CHAIN.
+- With this reason, if we access a variable in c JS will look that variable in the c local memory if not found it will look through its lexical enviroment and this chain goes when lexical environment becomes null, This is Called SCOPE CHAIN.
 
 ``
 function a(){

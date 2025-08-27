@@ -162,18 +162,18 @@ class LinkedList {
 
 const ll = new LinkedList();
 
-ll.addLast(1);
-ll.addLast(2);
-ll.addLast(3);
-ll.addLast(4);
-ll.addLast(5);
-ll.addLast(6);
-ll.addLast(3);
-ll.addLast(4);
-ll.addLast(5);
-ll.addLast(6);
-ll.deleteDuplicates();
-ll.display();
+// ll.addLast(1);
+// ll.addLast(2);
+// ll.addLast(3);
+// ll.addLast(4);
+// ll.addLast(5);
+// ll.addLast(6);
+// ll.addLast(3);
+// ll.addLast(4);
+// ll.addLast(5);
+// ll.addLast(6);
+// ll.deleteDuplicates();
+// ll.display();
 
 ////////////////////////////////////////////////////////////////////////////////
 //////Doubly Linked List
@@ -240,6 +240,30 @@ class DoubliList {
     // 1--2---3
   }
 
+  deleteNode(node) {
+    let current = this.head;
+    while (current) {
+      if (current.val == node) {
+        break;
+      }
+      current = current.next;
+    }
+    if (!current) return 'Node not found';
+    //1-2-3-4-5
+
+    if (!current.prev) {
+      this.head = current.next;
+      if (this.head.prev) this.head.prev = null;
+      return;
+    }
+
+    if (current.next) {
+      current.next.prev = current.prev;
+    }
+
+    let prev = current.prev;
+    prev.next = prev.next.next;
+  }
   display() {
     let current = this.head;
     while (current) {
@@ -249,12 +273,12 @@ class DoubliList {
   }
 }
 
-// const dl = new DoubliList();
-// dl.addFirst(3);
-// dl.addFirst(2);
-// dl.addFirst(1);
-// dl.addLast(4);
-// dl.addLast(5);
-// dl.addLast(6);
-
-// dl.display();
+const dl = new DoubliList();
+dl.addFirst(3);
+dl.addFirst(2);
+dl.addFirst(1);
+dl.addLast(4);
+dl.addLast(5);
+dl.addLast(6);
+dl.deleteNode(3);
+dl.display();

@@ -106,7 +106,10 @@ const person2 = createPerson('Nidhi', 21);
 ///every objects shares __proto__ object that js attached automatically
 ///thats we got access to all methods when we create array or objects
 
-const abc = ['abc', 'bb'];
+// const arr = [1, 2, 3];
+// console.log(arr.__proto__ === Array.prototype); // true
+// console.log(arr.__proto__.__proto__ === Object.prototype); // true
+// console.log(arr.__proto__.__proto__.__proto__); // null
 
 ///////////////////////////////////////////////////////////////////////////////
 /////OBJECT METHODS
