@@ -41,7 +41,13 @@ const emitter = new eventEmitter();
 //   if (err) return console.log('Error in Deleting the file');
 //   console.log('Deleted succefully');
 // });
-
+// fs.readdir('.', (err, files) => {
+//   if (err) return console.log('Reading error');
+//   console.log(files);
+// });
+// fs.stat('cluster.js', (err, stat) => {
+//   console.log(stat.isFile());
+// });
 ///////////////////////////////////////////////////
 ///Create a server using HTTP module
 
